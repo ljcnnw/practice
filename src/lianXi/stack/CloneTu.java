@@ -1,5 +1,6 @@
 package lianXi.stack;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -30,14 +31,16 @@ import java.util.Stack;
  * 必须将给定节点的拷贝作为对克隆图的引用返回。
  */
 public class CloneTu {
-    class Node {
+     static class Node {
+        public int id;
         public int val;
         public List<Node> neighbors;
 
         public Node() {
         }
 
-        public Node(int _val, List<Node> _neighbors) {
+        public Node(int _id, int _val, List<Node> _neighbors) {
+            id = _id;
             val = _val;
             neighbors = _neighbors;
         }
@@ -46,16 +49,39 @@ public class CloneTu {
     ;
 
 
-    public String cloneThem(Node node) {
+    public void cloneThem(Node node) {
 
 
         Stack<Node> stack = new Stack<>();
         stack.push(node);
+        while (!stack.empty()) {
+            System.out.println("节点" + node.id + "的值是" + node.val + "他有两个邻居：节点" + node.neighbors.get(0).id + "和" + node.neighbors.get(1).id);
+            stack.pop();
+            node = node.neighbors.get(0);
+        }
 
 
-
-        return "";
     }
 
+    public static void main(String[] args) {
+        CloneTu cloneTu = new CloneTu();
+
+
+        Node node = new Node();
+        Node node2 = new Node();
+        Node node3 = new Node();
+        Node node4 = new Node();
+        List<Node> nodes = new ArrayList<>();
+        nodes.add(node2);
+        node4 = new Node(4,4,nodes);
+        nodes.add(node4);
+        node = new Node(1,1,nodes);
+        List<Node> nodes2 = new ArrayList<>();
+        nodes2.add(node2);
+        nodes2.add(node4);
+
+
+
+    }
 
 }
