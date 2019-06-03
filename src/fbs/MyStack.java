@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 栈(LIFO)  后入
+ * 栈(LIFO)  先进后出
  */
 public class MyStack {
     private List<Integer> data;               // store elements
